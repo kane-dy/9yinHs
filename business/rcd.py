@@ -1,8 +1,6 @@
 import win32api
 import win32gui
 import cv2
-import time
-import datetime
 import numpy as np
 import utils.sbowh as sbowh
 import utils.gtwh as gtwh
@@ -20,12 +18,11 @@ def recording(hwnd):
         img = sbowh.get_coordinate(hwnd,width,height)
         frame = cv2.cvtColor(img, cv2.COLOR_RGBA2RGB)
         # results =  model.predict(frame)
-        model.predict(frame,
-                  save=False,
-                  show=True,
-                  )
-        # cv2.namedWindow("img", 0)
-        # cv2.resizeWindow("img", 1024, 768)
-        # cv2.imshow("img",results)
+        results = model(frame)
+        
+        annotated_frame = results[0].plot()
+        cv2.namedWindow("img", 0)
+        cv2.resizeWindow("img", 1024, 768)
+        cv2.imshow("img",annotated_frame)
         if cv2.waitKey(1) == ord('q'): # 按'q'键推出
             break
