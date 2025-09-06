@@ -1,19 +1,16 @@
 from PyQt6.QtWidgets import QApplication, QTableWidget, QTableWidgetItem, QAbstractItemView, QHeaderView
 from PyQt6 import uic
-
+from utils.utils_tools import path
+from solutions.table import table_models
 import sys
 
 if __name__ == '__main__':
+    
+    ui_path = path()+"\models"
     app = QApplication(sys.argv)
-    ui = uic.loadUi("D:\project\9yinHs\9yinHs\9yinHs.ui")
+    ui = uic.loadUi(ui_path+"\9yinHs.ui")
     table: QTableWidget = ui.tableWidget
-    table.setRowCount(6)
-    table.setColumnCount(7)
-    table.setHorizontalHeaderLabels(['编号', '句柄', '显示', '任务', '开始', '结束', '备注'])
-    for i in range(6):
-        for j in range(7):
-            data = QTableWidgetItem(str(i + j))
-            table.setItem(i, j, data)
+    table = table_models(table)
     table.setAlternatingRowColors(True)
     table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
     table.horizontalHeader().setStretchLastSection(True)
