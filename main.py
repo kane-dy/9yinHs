@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QApplication, QTableWidget, QTableWidgetItem, QAbstractItemView, QHeaderView
+from PyQt6.QtWidgets import QApplication, QTableWidget, QAbstractItemView
 from PyQt6 import uic
 from utils.utils_tools import path
 from solutions.table import table_models
