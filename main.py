@@ -1,11 +1,11 @@
 from PyQt6.QtWidgets import QApplication, QTableWidget, QAbstractItemView
 from PyQt6 import uic
 from utils.utils_tools import path
-from solutions.table import table_models
+from business.table import table_models
+from business.qjrj import listen
 import sys
 
 if __name__ == '__main__':
-    
     ui_path = path()+"\models"
     app = QApplication(sys.argv)
     ui = uic.loadUi(ui_path+"\9yinHs.ui")
@@ -16,4 +16,5 @@ if __name__ == '__main__':
     table.horizontalHeader().setStretchLastSection(True)
     table.horizontalHeader().setStyleSheet("QHeaderView::section{border-top: 1px solid #9370DB}")
     ui.show()
+    listen()
     sys.exit(app.exec())
