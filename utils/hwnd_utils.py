@@ -2,9 +2,7 @@ import win32api
 import win32con
 from win32gui import *
 from time import sleep
-from ctypes import *
 from fuzzywuzzy import fuzz
-import json
 
 
 
@@ -55,7 +53,11 @@ def get_win_all():
                 hwnd_l.append(data)
     return hwnd_l
 
+# 调节屏幕分辨率
+def window_resolution(hwnd,x,y):
+    MoveWindow(hwnd, 0, 0, x, y, True)
 
-if __name__ == "__main__":
-     hwnd = get_win_all()
-     print(hwnd)
+
+#最大化窗口
+def window_maximize(hwnd):
+    ShowWindow(hwnd, win32con.SW_MAXIMIZE)

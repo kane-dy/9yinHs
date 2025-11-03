@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QApplication, QTableWidget, QAbstractItemView
 from PyQt6 import uic
+
 from utils.utils_tools import path
 from business.table import table_models
 from business.qjrj import listen

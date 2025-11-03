@@ -2,9 +2,13 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QTableWidgetItem,QPushButton,QComboBox
 from utils.hwnd_utils import get_win_all,set_wintop,set_unpinwin
+from utils.hwnd_utils import window_resolution,window_maximize
+from utils.md5_encryption import md5_encrytion
 import utils.global_variable as gv
 import json
 import time
+
+keytool=gv.KEYTOOL
 #表格模型
 def table_models(table):
     hwnd_data = get_win_all()
@@ -41,15 +45,31 @@ def table_models(table):
                 view_button.clicked.connect(lambda: btnText(hwnd,cb.currentText()))
                 table.setCellWidget(i, 3, view_button)
 
-                data3 = QTableWidgetItem("F1 开始，F2 结束")
+                data3 = QTableWidgetItem("Ctrl 开始，alt 结束")
                 data3.setTextAlignment(alignment) 
                 table.setItem(i, 4, data3)
     return table
 
 def btnText(hwnd,cbText):
-    print(hwnd)
-    print(cbText)
-    gv.HWND_CBTEXT=hwnd + "," + cbText
-    set_wintop(hwnd)
-    time.sleep(1)
-    set_unpinwin(hwnd)
+    # print("句柄："+hwnd+",任务："+cbText)
+    task_text = md5_encrytion(cbText).get_md5() # 获取任务的加密信息
+    gv.HWND_CBTEXT = hwnd + "," +task_text
+    # print("加密信息："+gv.HWND_CBTEXT)
+    set_wintop(hwnd) # 窗口置顶
+
+    time.sleep(0.5)
+
+    set_unpinwin(hwnd) # 取消窗口置顶
+
+    time.sleep(0.5)
+
+    if gv.TASK_YB == task_text: # 任务是运镖的换窗口分辨率1280 x 720
+        # print("正在运镖")
+        x = 1280
+        y = 720
+        window_resolution(hwnd, x, y)
+        time.sleep(0.5)
+        keytool.DD_move(int(x / 2), int(y / 2))
+    else: #换取幸运硬币窗口最大化
+        # print("幸运硬币")
+        window_maximize(hwnd)
