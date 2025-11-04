@@ -4,11 +4,15 @@ from PyQt6 import uic
 from utils.utils_tools import path
 from business.table import table_models
 from business.qjrj import listen
+from PyQt6.QtGui import QIcon
 import sys
 
 if __name__ == '__main__':
-    ui_path = path()+"\models"
+    icon_path = path()+"\image\icon.ico"
     app = QApplication(sys.argv)
+    icon = QIcon(icon_path)
+    ui_path = path()+"\models"
+    app.setWindowIcon(icon)
     ui = uic.loadUi(ui_path+"\9yinHs.ui")
     table: QTableWidget = ui.tableWidget
     table = table_models(table)

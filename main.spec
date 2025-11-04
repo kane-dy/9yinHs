@@ -7,11 +7,14 @@ a = Analysis(
     'utils/utils_tools.py','business/qjrj.py','business/table.py','business/task_xyyb_theory.py'],
     pathex=[],
     binaries=[
-    ('D:\\project\\9yinHs\\models\\dd.54900.dll', 'models'),
+    ('D:\\project\\9yinHs\\models\\dd.54900.dll', './models'),
     ('D:\\project\\9yinHs\\business','business'),
     ('D:\\project\\9yinHs\\utils','utils')
     ],
-    datas=[('D:\project\9yinHs\models\9yinHs.ui', 'models' )],
+    datas=[
+    ('D:\project\9yinHs\models\9yinHs.ui', './models' ),
+    ('D:\project\9yinHs\image\icon.ico','./image')
+    ],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -27,12 +30,13 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='main',
+    name='9yinHs',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=True,
+    icon='image/icon.ico',
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,

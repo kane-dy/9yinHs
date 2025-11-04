@@ -71,5 +71,7 @@ def btnText(hwnd,cbText):
         time.sleep(0.5)
         keytool.DD_move(int(x / 2), int(y / 2))
     else: #换取幸运硬币窗口最大化
-        # print("幸运硬币")
-        window_maximize(hwnd)
+        # print("幸运硬币")1680x1050
+        window_resolution(hwnd, 1680, 1050)
+        time.sleep(0.5)
+        # window_maximize(hwnd)

@@ -4,8 +4,13 @@ import os
 def path():
     path =os.path.abspath(os.path.join(os.getcwd()))
     return path
-
+# def path():
+#     path = os.path.abspath(os.path.dirname(__file__))
+#     return path
 
 def p_d_path():
     path =os.path.join(os.getcwd(), "../..")
     return path
+#
+# if __name__ == '__main__':
+#     print(path())

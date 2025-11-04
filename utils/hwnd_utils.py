@@ -55,7 +55,7 @@ def get_win_all():
 
 # 调节屏幕分辨率
 def window_resolution(hwnd,x,y):
-    MoveWindow(hwnd, 0, 0, x, y, True)
+    MoveWindow(hwnd, 0, -8, x, y, True)
 
 
 #最大化窗口

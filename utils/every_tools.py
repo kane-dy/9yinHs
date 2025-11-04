@@ -13,6 +13,7 @@ def get_Hwnd():
     hwnd = win32gui.WindowFromPoint(point)  # 请填写 x 和 y 坐标
     left, top, right, bottom = win32gui.GetWindowRect(hwnd) # 获取窗口大小
     coord_left_up = (left, top) # 左上角坐标
+    print(coord_left_up)
     return left,top,right,bottom
 # 获取当前坐标
 def get_move_point():
