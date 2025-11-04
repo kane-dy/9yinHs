@@ -1,2 +1,4 @@
 /.idea/
 /solutions/
+/business/__pycache__/*
+/utils/__pycache__/*
