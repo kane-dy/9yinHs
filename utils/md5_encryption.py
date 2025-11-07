@@ -14,3 +14,8 @@ class md5_encrytion:
 
     def get_md5(self):
         return self.md5_result
+
+
+if __name__ == '__main__':
+    md5 = md5_encrytion("自动化按键").get_md5()
+    print(md5)

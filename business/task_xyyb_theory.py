@@ -11,7 +11,6 @@ class task_xyyb_theory:
         self.bottom = bottom
         self.keytool = gv.KEYTOOL
     def exchange_xyyb(self):
-
         # 1、找到天魔追魂刀换取点
         self.keytool.DD_move(int(1002+self.left), int(554+self.top))
         # 2、按下左键点击

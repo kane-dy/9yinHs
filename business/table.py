@@ -38,7 +38,7 @@ def table_models(table):
                 table.setItem(i, 1, data1)
 
                 cb = QComboBox()
-                cb.addItems(["幸运硬币","拉镖"])
+                cb.addItems(["自动化按键","幸运硬币","拉镖"])
                 table.setCellWidget(i, 2, cb)
 
                 view_button = QPushButton("显示")
@@ -70,6 +70,8 @@ def btnText(hwnd,cbText):
         window_resolution(hwnd, x, y)
         time.sleep(0.5)
         keytool.DD_move(int(x / 2), int(y / 2))
+    elif gv.TASK_AUTO == task_text: # 自动化按键   窗口最大化
+        window_maximize(hwnd)
     else: #换取幸运硬币窗口最大化
         # print("幸运硬币")1680x1050
         window_resolution(hwnd, 1680, 1050)
