@@ -4,7 +4,7 @@ a = Analysis(
     ['main.py','utils/every_tools.py',
     'utils/global_variable.py','utils/hwnd_utils.py',
     'utils/key_tool.py','utils/md5_encryption.py',
-    'utils/utils_tools.py','business/qjrj.py','business/table.py','business/task_xyyb_theory.py'],
+    'utils/utils_tools.py','business/qjrj.py','business/table.py','business/task_xyyb_theory.py','business/automated_tasks.py'],
     pathex=[],
     binaries=[
     ('D:\\project\\9yinHs\\models\\dd.54900.dll', './models'),
