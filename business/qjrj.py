@@ -3,6 +3,7 @@ from time import sleep
 from pynput import keyboard
 import utils.global_variable as gv
 from business.task_xyyb_theory import task_xyyb_theory
+from business.automated_tasks import automated_tasks
 import sys
 key_press_count = []
 x  = int(0)
@@ -14,10 +15,13 @@ def on_press(key):
             hwnd_task = hwnd_task_str.split(',')
             hwnd=hwnd_task[0]
             task=hwnd_task[1]
-            print(key_press_count)
             if gv.TASK_XYYB == task:  # 判断是否为幸运硬币
                 xyyb_theory = task_xyyb_theory(hwnd)
                 xyyb_theory.app_exchange()
+            elif gv.TASK_AUTO == task:
+                autotask = automated_tasks(hwnd)
+                autotask.app_autotask()
+
 
 def on_release(key):
     pass
