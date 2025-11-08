@@ -12,7 +12,7 @@ class automated_tasks:
         self.keytool = gv.KEYTOOL
 
     def exchange_autotask(self):
-        self.keytool.DD_move(int(self.right/2), int(self.bottom/2))
+        # self.keytool.DD_move(int(self.right/2), int(self.bottom/2))
         self.keytool.DD_key("q")
         sleep(0.5)
         self.keytool.DD_key("e")
@@ -23,6 +23,7 @@ class automated_tasks:
         sleep(0.5)
         self.keytool.DD_key("r")
         sleep(0.5)
+        self.keytool.DD_key("q")
 
     def app_autotask(self):
         while True:
