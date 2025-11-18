@@ -1,3 +1,4 @@
+from functools import partial
 
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QTableWidgetItem,QPushButton,QComboBox
@@ -38,11 +39,13 @@ def table_models(table):
                 table.setItem(i, 1, data1)
 
                 cb = QComboBox()
-                cb.addItems(["自动化按键","幸运硬币","拉镖"])
+                cb.addItems(["自动化按键","幸运硬币","连点器","拉镖"])
+                cb.setCurrentIndex(0)
                 table.setCellWidget(i, 2, cb)
 
                 view_button = QPushButton("显示")
-                view_button.clicked.connect(lambda: btnText(hwnd,cb.currentText()))
+                # table 表格  ， table.currentRow() 行数
+                view_button.clicked.connect(lambda:btnText(table,table.currentRow()))
                 table.setCellWidget(i, 3, view_button)
 
                 data3 = QTableWidgetItem("Ctrl 开始，alt 结束")
@@ -50,27 +53,46 @@ def table_models(table):
                 table.setItem(i, 4, data3)
     return table
 
-def btnText(hwnd,cbText):
-    # print("句柄："+hwnd+",任务："+cbText)
-    task_text = md5_encrytion(cbText).get_md5() # 获取任务的加密信息
+# def btnTest(table,row):
+#     print("行数："+str(row))
+#
+#     # widget = table.cellWidget(row,2).currentText()
+#     # if isinstance(widget, QComboBox):
+#     #     # 如果是，使用 currentText() 获取当前选中的文本
+#     #     current_value = widget.currentText()
+#     #     print(f"内容：{current_value}")
+#     current_value = table.cellWidget(row, 2).currentText()
+#     print(f"内容：{current_value}")
+#     hwnd  = table.item(row,0).text()
+#     print(f"句柄：{hwnd}")
+
+
+'''
+table 表格内容
+row 行数
+'''
+def btnText(table,row):
+    hwnd = table.item(row,0).text()
+    current_value = table.cellWidget(row, 2).currentText()
+    # print(f"句柄：{hwnd},任务：{current_value}")
+    task_text = md5_encrytion(current_value).get_md5() # 获取任务的加密信息
     gv.HWND_CBTEXT = hwnd + "," +task_text
-    # print("加密信息："+gv.HWND_CBTEXT)
+
     set_wintop(hwnd) # 窗口置顶
 
     time.sleep(0.5)
-
     set_unpinwin(hwnd) # 取消窗口置顶
 
     time.sleep(0.5)
-
     if gv.TASK_YB == task_text: # 任务是运镖的换窗口分辨率1280 x 720
-        # print("正在运镖")
         x = 1280
         y = 720
         window_resolution(hwnd, x, y)
         time.sleep(0.5)
         keytool.DD_move(int(x / 2), int(y / 2))
     elif gv.TASK_AUTO == task_text: # 自动化按键   窗口最大化
+        window_maximize(hwnd)
+    elif gv.TASK_LDQ == task_text: #连点器
         window_maximize(hwnd)
     else: #换取幸运硬币窗口最大化
         # print("幸运硬币")1680x1050
