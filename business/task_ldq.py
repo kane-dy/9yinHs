@@ -21,4 +21,4 @@ class task_ldq:
                 self.button_task_ldq()
                 if keyboard.is_pressed('alt'):
                     break
-                sleep(0.3)
+                sleep(0.2)
