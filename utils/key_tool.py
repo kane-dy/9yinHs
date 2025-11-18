@@ -14,7 +14,7 @@ class key_tool:
     def DD_key(self,key):
         k = vk[key]
         self.dd_dll.DD_key(k,1)
-        sleep(0.1)
+        sleep(0.2)
         self.dd_dll.DD_key(k,2)
 
     # 鼠标移动

@@ -20,6 +20,7 @@ if __name__ == '__main__':
     table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
     table.horizontalHeader().setStretchLastSection(True)
     table.horizontalHeader().setStyleSheet("QHeaderView::section{border-top: 1px solid #9370DB}")
+    table.setSelectionBehavior(table.SelectionBehavior.SelectRows)
     ui.show()
     listen()
     sys.exit(app.exec())

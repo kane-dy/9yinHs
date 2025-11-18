@@ -2,6 +2,7 @@ from time import sleep
 
 from pynput import keyboard
 import utils.global_variable as gv
+from business.task_ldq import task_ldq
 from business.task_xyyb_theory import task_xyyb_theory
 from business.automated_tasks import automated_tasks
 import sys
@@ -18,9 +19,12 @@ def on_press(key):
             if gv.TASK_XYYB == task:  # 判断是否为幸运硬币
                 xyyb_theory = task_xyyb_theory(hwnd)
                 xyyb_theory.app_exchange()
-            elif gv.TASK_AUTO == task:
+            elif gv.TASK_AUTO == task: # 自动化按键
                 autotask = automated_tasks(hwnd)
                 autotask.app_autotask()
+            elif gv.TASK_LDQ == task: # 连点器
+                taskldq = task_ldq(hwnd)
+                taskldq.app_task_ldq()
 
 
 def on_release(key):
